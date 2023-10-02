@@ -9,4 +9,42 @@
 /* font-family: 'Poppins',sans-serif; */
 /* font-family: 'Playfair Display',serif; */
 
+/* NavBar CSS */
+.navbar{
+  font-family: 'Poppins', sans-serif; 
+  font-size: 17px;
+  line-height: 26px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 6px -6px grey;
+  --webkit-box-shadow: 0 8px 6px -6px gray;
+  border-bottom: solid grey !important;
+}
+.nav-link{
+  font-weight: 300 !important;
+}
+.active{
+  border-bottom: 2px solid orange;
+}
+.navbar-brand{
+  font-family: 'roboto',sans-serif;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+/* Footer css */
+.footer a{
+  text-decoration: none;
+  padding: 20px;
+  color: #fff;
+}
+.footer a:hover{
+color: orange;
+border-bottom: 1px solid orange;
+}
 
+/* Page Not Found CSS */
+.pnf-container{
+  display: flex;
+  min-height: 60vh;
+  align-items: center;
+  justify-content: center;
+}
