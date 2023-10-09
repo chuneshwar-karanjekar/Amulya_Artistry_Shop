@@ -4,6 +4,10 @@ import  About  from "./pages/About.js";
 import Contact from "./pages/Contact.js";
 import Policy from "./pages/Policy.js";
 import PageNotFound from "./pages/PageNotFound";
+import Login from "./pages/Auth/Login.js";
+import Register from "./pages/Auth/Register.js";
+
+
 function App() {
   return (
     <>
@@ -11,10 +15,10 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="*" element={<PageNotFound />} />
-
-
       </Routes>
     </>
   );
