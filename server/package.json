@@ -1,12 +1,15 @@
 {
   "name": "Amulya_Artistry",
+  "proxy": "http://localhost:8080",
   "version": "1.0.0",
   "description": "Amulya Artistry project",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "npm start --prefix ../client/client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "Chuneshwar-karanjekar",
@@ -14,6 +17,8 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "color": "^4.2.3",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",

@@ -1,9 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan'
-import { connect } from 'mongoose';
 import connectDB from './config/db.js';
 import authRoute from './routes/authRoute.js';
+import cors from 'cors';
+
 
 // configure .env
 dotenv.config();
@@ -15,8 +16,9 @@ connectDB();
 const app = express();
 
 // middelwares
-app.use(express.json())
-app.use(morgan('dev'))
+app.use(cors());
+app.use(express.json());
+app.use(morgan('dev'));
 
 
 // routes

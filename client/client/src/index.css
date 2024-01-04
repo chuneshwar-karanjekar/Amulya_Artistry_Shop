@@ -115,3 +115,75 @@ color: orangered;
 .row .form-group{
   margin: 10px;
 }
+
+/*  Login page */
+/* Basic styling for the form */
+
+.login-box{
+ margin-top: 5vh;
+}
+form {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Style for the form header */
+form h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Style for form labels */
+form label {
+  font-weight: 600;
+}
+
+/* Style for input fields */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Custom checkbox style */
+.custom-control-input:checked~.custom-control-label::before {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Style for submit button */
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Style for forgot password link */
+.forgot-password a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styling */
+@media (max-width: 576px) {
+  form {
+      padding: 15px;
+  }
+}
