@@ -17,118 +17,115 @@ const Register = () => {
   // form function reload
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(name,email,password,phone,address);
-    
+    console.log(name, email, password, phone, address);
+
     try {
-      
-      const res = await axios.post("/api/v1/auth/register",{
+
+      const res = await axios.post("/api/v1/auth/register", {
         name,
         email,
         password,
         phone,
         address,
       });
-      if(res && res.data.success){
+      if (res && res.data.success) {
         toast.success(res.data && res.data.message);
         navigate("/login");
-      }else{
+      } else {
         alert(res.data.message);
       }
     } catch (error) {
       console.log(error);
       console.error("Something went wrong...");
     }
-};
+  };
 
   return (
     <Layout>
       <section className="vh-800 ">
-        <div className="container">
-          <div
-            className="row justify-content-center align-items-center"
-            style={{ height: "70vh" }}
-          >
-            <div className="col-md-6">
-              <div className="card shadow">
-                <div className="card-body">
-                  <h2 className="text-center mb-4">Register With Amulya</h2>
-                  <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                      <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="form-control"
-                        placeholder="Your Name"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="form-control"
-                        placeholder="Email"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="form-control"
-                        placeholder="Password"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <input
-                        type="number"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        className="form-control"
-                        placeholder="Phone Number"
-                        min="10"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <input
-                        type="text"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        className="form-control"
-                        placeholder="Address"
-                        required
-                      />
-                    </div>
-                    <div className="mb-3 form-check">
-                      <input
-                        type="checkbox"
-                        className="form-check-input"
-                        id="termsCheck"
-                        required
-                      />
-                      <label className="form-check-label" htmlFor="termsCheck">
-                        I agree to the Terms of service
-                      </label>
-                    </div>
-                    <div className="d-grid">
-                      <button
-                        type="submit"
-                        className="btn btn-primary btn-block"
-                      >
-                        Register
-                      </button>
-                    </div>
-                  </form>
+        <div
+          className="row justify-content-center align-items-center"
+          style={{ height: "70vh" }} >
+          <div className="col-md-6">
+            <div className="card-body">
+              <h3 className="text-center mb-4 mt-3">Register With Amulya</h3>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="form-control"
+                    placeholder="Your Name"
+                    required
+                  />
                 </div>
-              </div>
+                <div className="mb-3">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="form-control"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="form-control"
+                    placeholder="Password"
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="form-control"
+                    placeholder="Phone Number"
+                    min="10"
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    className="form-control"
+                    placeholder="Address"
+                    required
+                  />
+                </div>
+                <div className="mb-3 form-check">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    id="termsCheck"
+                    required
+                  />
+                  <label className="form-check-label" htmlFor="termsCheck">
+                    I agree to the Terms of service
+                  </label>
+                </div>
+                <div className="d-grid">
+                  <button
+                    type="submit"
+                    className="btn btn-primary btn-block"
+                  >
+                    Register
+                  </button>
+                </div>
+              </form>
             </div>
+
           </div>
         </div>
+
       </section>
     </Layout>
   );
