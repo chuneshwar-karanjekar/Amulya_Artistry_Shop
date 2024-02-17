@@ -117,7 +117,6 @@ color: orangered;
 }
 
 /*  Login page */
-/* Basic styling for the form */
 
 .login-box{
  margin-top: 5vh;
@@ -131,6 +130,7 @@ form {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
+
 
 /* Style for the form header */
 form h3 {
@@ -181,9 +181,9 @@ form label {
   text-decoration: underline;
 }
 
-/* Responsive styling */
+/* Adjustments for small screens */
 @media (max-width: 576px) {
-  form {
-      padding: 15px;
+  .card {
+    width: 100%;
   }
 }
