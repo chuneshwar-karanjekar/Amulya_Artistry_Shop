@@ -32,7 +32,7 @@ const Login = () => {
         // redirect to dashboard
         navigate(location.state || "/")
       } else {
-        Toaster.error(res.data.message); 
+        Toaster.error(res.data.message);
       }
     } catch (error) {
       console.log(error);
@@ -85,7 +85,7 @@ const Login = () => {
               </button>
             </div>
             <p className="forgot-password text-right">
-              Forgot <a href="#">password?</a>
+              Forgot <a href="/forgot-password">Password</a>
             </p>
           </form>
         </div>

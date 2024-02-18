@@ -12,6 +12,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [answer, setAnswer] = useState("");
   const navigate = useNavigate();
 
   // form function reload
@@ -27,6 +28,7 @@ const Register = () => {
         password,
         phone,
         address,
+        answer,
       });
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
@@ -42,10 +44,10 @@ const Register = () => {
 
   return (
     <Layout>
-      <section className="vh-800 ">
+      <section className="800vh">
         <div
-          className="row justify-content-center align-items-center"
-          style={{ height: "70vh" }} >
+          className="row justify-content-center align-items-center mb-5"
+          style={{ height: "100vh" }} >
           <div className="col-md-6">
             <div className="card-body">
               <h3 className="text-center mb-4 mt-3">Register With Amulya</h3>
@@ -101,6 +103,16 @@ const Register = () => {
                     required
                   />
                 </div>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    value={answer}
+                    onChange={(e) => setAnswer(e.target.value)}
+                    className="form-control"
+                    placeholder="What is your NickName ?"
+                    required
+                  />
+                  </div>
                 <div className="mb-3 form-check">
                   <input
                     type="checkbox"

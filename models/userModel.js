@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 // this is for login user schema
-const userSchema =  new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -15,18 +15,22 @@ const userSchema =  new mongoose.Schema({
         type: String,
         required: true
     },
-    phone:{
-    type: String,
-    required: true
-},
+    phone: {
+        type: String,
+        required: true
+    },
     address: {
         type: String,
-        required:true
+        required: true
     },
-    roll: {
-        type: Number,
-        default:0
-    }
+    answer: {
+        type: String,
+        required: true
+    },
+    role: {
+    type: Number,
+    default: 0
+}
 }, { timestamps: true })
 
-export default mongoose.model('users',userSchema)
+export default mongoose.model('users', userSchema)
