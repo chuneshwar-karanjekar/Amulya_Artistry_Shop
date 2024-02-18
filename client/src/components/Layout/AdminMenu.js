@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 const AdminMenu = () => {
     return (
         <>
+        <div className='container-fluid m-4 p-4'>
             <div className='text-center'>
                 <div className="list-group">
                     <h4>Admin Panel</h4>
@@ -13,7 +14,7 @@ const AdminMenu = () => {
                     <NavLink to="/dashboard/admin/users" className="list-group-item list-group-item-action">Users</NavLink>
                 </div>
             </div>
-
+            </div>
         </>
     )
 }
