@@ -6,9 +6,11 @@ import Policy from "./pages/Policy.js";
 import PageNotFound from "./pages/PageNotFound";
 import Login from "./pages/Auth/Login.js";
 import Register from "./pages/Auth/Register.js";
-import { Dashboard } from "./pages/user/Dashboard.js";
+import { Dashboard, UserDashboard } from "./pages/user/UserDashboard.js";
 import PrivateRoute from "./components/Routes/userRoute.js";
 import ForgotPassword from "./pages/Auth/ForgotPassword.js";
+import AdminPrivateRoute from "./components/Routes/adminRoute.js";
+import AdminDashboard from "./pages/Admin/AdminDashboard.js";
 
 
 function App() {
@@ -24,10 +26,14 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
-
-        {/* make private route */}
+        {/* Private route for user*/}
         <Route path="/dashboard" element={<PrivateRoute />}>
-          <Route path="" element={<Dashboard />} />
+          <Route path="user" element={<UserDashboard/>} />
+        </Route>
+
+        {/* Private Route for Admin */}
+        <Route path="/dashboard" element={<AdminPrivateRoute/>}>
+          <Route path="admin" element={<AdminDashboard/>}/>
         </Route>
 
       </Routes>

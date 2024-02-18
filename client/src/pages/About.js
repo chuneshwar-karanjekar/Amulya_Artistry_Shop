@@ -1,16 +1,16 @@
 
-  import React from "react";
-  import Layout from "../components/Layout/Layout";
+import React from "react";
+import Layout from "../components/Layout/Layout";
 import { Link } from "react-router-dom";
-import { BsFacebook,BsInstagram,BsLinkedin,BsGithub } from "react-icons/bs";
-  const About =() =>{
+import { BsFacebook, BsInstagram, BsLinkedin, BsGithub } from "react-icons/bs";
+const About = () => {
   return (
-  <Layout title={"About Us"}>
+    <Layout title={"About Us"}>
       <section className="team-section">
-   <h1>about us</h1>
+        <h1>about us</h1>
       </section>
-  </Layout>
+    </Layout>
   )
-  }
- 
- export default About;
+}
+
+export default About;
