@@ -14,6 +14,8 @@ import AdminDashboard from "./pages/Admin/AdminDashboard.js";
 import CreateCategory from "./pages/Admin/CreateCategory.js";
 import CreateProduct from "./pages/Admin/CreateProduct.js";
 import Users from "./pages/Admin/Users.js";
+import UserProfile from "./pages/user/UserProfile.js";
+import Orders from "./pages/user/Orders.js";
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
         {/* Private route for user*/}
         <Route path="/dashboard" element={<PrivateRoute />}>
           <Route path="user" element={<UserDashboard/>} />
+          <Route path="user/profile" element={<UserProfile/>} />
+          <Route path="user/orders" element={<Orders/>} />
         </Route>
 
         {/* Private Route for Admin */}
