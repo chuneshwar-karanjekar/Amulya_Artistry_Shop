@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import Layout from '../../components/Layout/Layout'
 import axios from 'axios';
 import Toaster from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from "../../context/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
   const [auth, setAuth] = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +29,8 @@ const Login = () => {
         });
         // save data in local storage before redirect the page
         localStorage.setItem('auth', JSON.stringify(res.data));
-        navigate("/")
+        // redirect to dashboard
+        navigate(location.state || "/")
       } else {
         Toaster.error(res.data.message); 
       }
