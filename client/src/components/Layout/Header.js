@@ -8,14 +8,14 @@ const Header = () => {
   const [auth, setAuth] = useAuth();
 
   // clear user data and token from local storage
-  const handleLogout = () =>{
-   setAuth({
-    ...setAuth,
-    user:null,
-    token:"",
-   });
-   localStorage.removeItem("auth");
-   toast.success("User Logout Successfully")
+  const handleLogout = () => {
+    setAuth({
+      ...setAuth,
+      user: null,
+      token: "",
+    });
+    localStorage.removeItem("auth");
+    toast.success("User Logout Successfully")
   }
   return (
     <>
@@ -36,23 +36,36 @@ const Header = () => {
 
 
               {/* change login to logout nav link  */}
-             {!auth.user ?(
-              <>
-               <li className="nav-item">
-                <NavLink to="/register" className="nav-link">Register</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/login" className="nav-link">Login</NavLink>
-              </li>
-              </>
-             ):(
-              <>
-              <li className="nav-item">
-                <NavLink onClick={handleLogout} to="/login" className="nav-link">Logout</NavLink>
-              </li>
-              
-              </>
-             )}
+              {!auth.user ? (
+                <>
+                  <li className="nav-item">
+                    <NavLink to="/register" className="nav-link">Register</NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink to="/login" className="nav-link">Login</NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+
+                  <li className="nav-item dropdown">
+                    <NavLink className="nav-link dropdown-toggle" to="#" data-bs-toggle="dropdown"  aria-expanded="false">
+                      {auth?.user?.name}
+                    </NavLink>
+                    <ul className="dropdown-menu" >
+                      <li>
+                        <NavLink className="dropdown-item" to="/dashboard">Dashboard</NavLink>
+                      </li>
+                      <li>
+                        <NavLink onClick={handleLogout} to="/login" className="dropdown-item">
+                          Logout
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </li>
+
+                </>
+              )}
 
               <li className="nav-item">
                 <NavLink to="/card" className="nav-link">Cart (0)</NavLink>
