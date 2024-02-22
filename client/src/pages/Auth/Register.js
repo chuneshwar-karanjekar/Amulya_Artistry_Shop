@@ -47,7 +47,7 @@ const Register = () => {
       <section className="800vh">
         <div
           className="row justify-content-center align-items-center mb-5"
-          style={{ height: "100vh" }} >
+          style={{ height: "85vh" }} >
           <div className="col-md-6">
             <div className="card-body">
               <h3 className="text-center mb-4 mt-3">Register With Amulya</h3>
