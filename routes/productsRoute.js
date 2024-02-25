@@ -21,7 +21,7 @@ router.delete('/delete-product/:pid',requireSignIn, isAdmin, deleteProductContro
 //Update  product
 router.put('/update-product/:pid', requireSignIn, isAdmin, formidable, updateProductController);
 
-// get photo
-router.get('/product-photos/:pid', productPhotoController)
+// get single photo
+router.get('/product-photo/:pid', productPhotoController)
 
 export default router;

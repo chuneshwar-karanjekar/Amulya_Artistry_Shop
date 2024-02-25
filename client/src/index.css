@@ -192,3 +192,9 @@ form label {
     width: 100%;
   }
 }
+
+/* product-link */
+.product-link{
+  text-decoration: none !important;
+  color:black !important;
+}
