@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import axios from "axios";
 import Toaster from "react-hot-toast";
-import { Checkbox } from "antd";
+import { Checkbox, Radio } from "antd";
+import { Prices } from "../components/priceFilter";
 
 
 const HomePage = () => {
   const [Categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
+  const [checked, setChecked] = useState([]);
+  const [radio, setRadio] = useState([]);
+
 
 
   // Get All products
@@ -25,38 +29,80 @@ const HomePage = () => {
     getAllProduct();
   }, []);
 
-// get all categories
-    const getAllCategory = async () => {
-      try {
-          const { data } = await axios.get('/api/v1/category/get-category');
-          if (data?.success) {
-              setCategories(data.category);
-          }
-      } catch (error) {
-          console.log(error);
-          Toaster.error("Something went wrong in getting catgeory");
+  // get all categories
+  const getAllCategory = async () => {
+    try {
+      const { data } = await axios.get('/api/v1/category/get-category');
+      if (data?.success) {
+        setCategories(data.category);
       }
+    } catch (error) {
+      console.log(error);
+      Toaster.error("Something went wrong in getting catgeory");
+    }
+  };
+
+  // Filtter by category
+  const handleFilter = (value, id) => {
+    let all = [...checked]              //Create a copy of the current state of checked items
+    if (value) {                       // If the value is true (checked), add the ID to the list
+      all.push(id);
+    } else {
+      all = all.filter((c) => c !== id); // If the value is false (unchecked), remove the ID from the list
+    }
+    setChecked(all);                    // Update the state with the new list of checked items
   };
 
   useEffect(() => {
-      getAllCategory();
-  }, []);
+   if(!checked.length || !radio.length) getAllCategory();
+  
+  }, [checked.length, radio.length]);
 
+  useEffect(() => {
+    if(checked.length || radio.length) filterProduct();
+  
+   }, [checked, radio]);
+
+
+  // get filter product
+  const filterProduct = async () =>{
+    try {
+      const { data } = await axios.post('/api/v1/product/product-filter', {checked, radio});
+      setProducts(data?.products);
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
 
   return (
-    <Layout title={"Best Offer"}>
-      <div className="row mt-3">
-        <div className="col-md-3">
-          <h4 className="text-center">Filtter by Category</h4>
+    <Layout title={"All Product - Best Offers"}>
+      <div className="container-fluid row mt-3">
+        <div className="col-md-2">
+          {/* category filter */}
+          <h4 className="text-center">Filter by Category</h4>
           <div className="d-flex flex-column">
             {
               Categories?.map((c) => (
-                <Checkbox key={c._id} onChange={(e) => console.log(e)}>
+                <Checkbox key={c._id} onChange={(e) => handleFilter(e.target.checked, c._id)}>
                   {c.name}
                 </Checkbox>
               ))
             }
 
+          </div>
+          {/* price filter */}
+          <h4 className="text-center mt-4">Filter by Price</h4>
+          <div className="d-flex flex-column">
+            <Radio.Group onChange={(e) => setRadio(e.target.value)}>
+              {Prices?.map(p => (
+                <div key={p._id}>
+                  <Radio value={p.array}>{p.name}</Radio>
+
+                </div>
+              ))}
+            </Radio.Group>
           </div>
         </div>
         <div className="col-md-9">
@@ -67,7 +113,8 @@ const HomePage = () => {
                 <img src={`/api/v1/product/product-photo/${p._id}`} className="card-img-top img-fluid" alt={p.name} />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">{p.discreption}</p>
+                  <p className="card-text">{p.discreption.substring(0,30)}</p>
+                  <p className="card-text"> ₹ {p.price} </p>
                   <div className="d-flex mb-2">
                     <button className="btn btn-primary ms-1">More Details</button>
                     <button className="btn btn-secondary ms-1">Add to card</button>

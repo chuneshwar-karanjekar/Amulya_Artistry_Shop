@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&family=Roboto:wght@700&family=Space+Mono&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -20,109 +20,126 @@
 */
 
 /* NavBar CSS */
-.navbar{
+.navbar {
   /* background-image: radial-gradient(circle farthest-corner at 0.2% 0.5%, rgba(68, 36, 164, 1) 3.7%, rgba(84, 212, 228, 1) 92.7%); */
-  background-color:#FFF3E0;
-  font-family: 'Poppins', sans-serif; 
+  background-color: #FFF3E0;
+  font-family: 'Poppins', sans-serif;
   font-size: 17px;
   line-height: 26px;
   text-transform: uppercase;
-  position:static;
+  position: static;
 }
-.nav-link{
+
+.nav-link {
   font-weight: 300 !important;
 }
-.active{
+
+.active {
   border-bottom: 2px solid orange;
 }
-.navbar-brand{
-  font-family: 'roboto',sans-serif;
+
+.navbar-brand {
+  font-family: 'roboto', sans-serif;
   letter-spacing: 2px;
   font-weight: 700;
 }
-.navbar-brand img{
-max-width: 300px;
-max-height: 50px;
-background-size: cover;
-margin-left: 100px;
+
+.navbar-brand img {
+  max-width: 300px;
+  max-height: 50px;
+  background-size: cover;
+  margin-left: 100px;
 }
+
 /* Footer css */
-.footer a{
+.footer a {
   text-decoration: none;
   padding: 20px;
   color: #fff;
 }
-.footer a:hover{
-color: orange;
-border-bottom: 1px solid orange;
+
+.footer a:hover {
+  color: orange;
+  border-bottom: 1px solid orange;
 }
 
 /* Page Not Found CSS */
-.page-not-found{
-    background-image: url("/public/assets/pnf-3.jpg");
-    height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.page-not-found {
+  background-image: url("/public/assets/pnf-3.jpg");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.pnf-container{
+
+.pnf-container {
   display: flex;
   min-height: 100%;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.pnf-title{
+
+.pnf-title {
   font-size: 100px;
   font-weight: 700;
 }
-.pnf-heading{
-font-weight: normal;
+
+.pnf-heading {
+  font-weight: normal;
 }
-.pnf-btn{
+
+.pnf-btn {
   text-decoration: none;
   color: black;
   border: 2px solid rgb(184, 13, 13);
   padding: 10px 30px;
   margin: 10px;
 }
-.pnf-btn:hover{
-color: orangered;
+
+.pnf-btn:hover {
+  color: orangered;
   border: 2px solid orange;
 }
 
 /* Contact Us Page */
-.container{
+.container {
   margin-top: 10vh;
   margin-bottom: 5vh;
 }
-.img-container{
+
+.img-container {
   background-image: url("/public/assets/contact-2.png");
   min-width: 150px;
   min-height: 450px;
-  background-size:contain;
+  background-size: contain;
   border-radius: 10px;
   align-items: center;
 }
-.container h3{
+
+.container h3 {
   text-align: center;
-  padding-top:0;
+  padding-top: 0;
 }
-.container p{
-  text-align:center ;
+
+.container p {
+  text-align: center;
   margin-bottom: 30px;
 }
-.row .form-group{
+
+.row .form-group {
   margin: 10px;
 }
 
 /*  Login page */
-.login-container{
+.login-container {
   margin-top: 100px;
 }
-.login-box{
- height: 75vh;
+
+.login-box {
+  height: 75vh;
 }
+
 form {
   max-width: 400px;
   margin: auto;
@@ -133,7 +150,7 @@ form {
   background-color: #fff;
 }
 
-.c-form{
+.c-form {
   border: 1px solid #ffff;
 }
 
@@ -194,7 +211,7 @@ form label {
 }
 
 /* product-link */
-.product-link{
+.product-link {
   text-decoration: none !important;
-  color:black !important;
+  color: black !important;
 }
