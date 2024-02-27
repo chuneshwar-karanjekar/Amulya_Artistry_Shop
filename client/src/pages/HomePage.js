@@ -11,36 +11,44 @@ const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
-
+  const [total, setToatal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
 
   // Get All products
   const getAllProduct = async () => {
     try {
-      const { data } = await axios.get('/api/v1/product/get-product');
+
+      setLoading(true);
+      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      setLoading(false);
       setProducts(data.products);
     } catch (error) {
+      setLoading(false);
       console.log(error);
       Toaster.error("Error while getting products")
     }
   }
 
-  useEffect(() => {
-    getAllProduct();
-  }, []);
 
   // get all categories
   const getAllCategory = async () => {
     try {
       const { data } = await axios.get('/api/v1/category/get-category');
       if (data?.success) {
-        setCategories(data.category);
+        setCategories(data?.category);
       }
     } catch (error) {
       console.log(error);
       Toaster.error("Something went wrong in getting catgeory");
     }
   };
+
+  useEffect(() => {
+    getAllCategory();
+    getTotalCount();
+  }, []);
 
   // Filtter by category
   const handleFilter = (value, id) => {
@@ -54,32 +62,67 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-   if(!checked.length || !radio.length) getAllCategory();
-  
+    if (!checked.length || !radio.length) getAllProduct();
+
   }, [checked.length, radio.length]);
 
   useEffect(() => {
-    if(checked.length || radio.length) filterProduct();
-  
-   }, [checked, radio]);
+    if (checked.length || radio.length) filterProduct();
+
+  }, [checked, radio]);
 
 
   // get filter product
-  const filterProduct = async () =>{
+  const filterProduct = async () => {
     try {
-      const { data } = await axios.post('/api/v1/product/product-filter', {checked, radio});
+      const { data } = await axios.post('/api/v1/product/product-filter', { checked, radio });
       setProducts(data?.products);
-      
+
     } catch (error) {
       console.log(error);
-      
+
     }
   }
+
+  // get Toatal count
+  const getTotalCount = async () => {
+    try {
+
+      const { data } = await axios.get("/api/v1/product/product-count");
+      setProducts(data.products);
+      setToatal(data?.total)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    if (page === 1) return;
+    loadMore();
+
+  }, [page]);
+
+  // load more
+  const loadMore = async () => {
+    try {
+      setLoading(true)
+      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      setLoading(false)
+      setProducts([...products, ...data?.products])
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+
+    }
+  }
+
+
 
   return (
     <Layout title={"All Product - Best Offers"}>
       <div className="container-fluid row mt-3">
-        <div className="col-md-2">
+        {/* Filter container */}
+        <div className="col-md-2 fixed">
           {/* category filter */}
           <h4 className="text-center">Filter by Category</h4>
           <div className="d-flex flex-column">
@@ -104,6 +147,11 @@ const HomePage = () => {
               ))}
             </Radio.Group>
           </div>
+          <div className="d-flex flex-column">
+            <button className="btn btn-secondary mt-4" onClick={() => {
+              window.location.reload()
+            }}>RESET FILTERS</button>
+          </div>
         </div>
         <div className="col-md-9">
           <h3 className="text-center">All Products</h3>
@@ -113,15 +161,26 @@ const HomePage = () => {
                 <img src={`/api/v1/product/product-photo/${p._id}`} className="card-img-top img-fluid" alt={p.name} />
                 <div className="card-body">
                   <h5 className="card-title">{p.name}</h5>
-                  <p className="card-text">{p.discreption.substring(0,30)}</p>
+                  <p className="card-text">{p.discreption.substring(0, 30)}</p>
                   <p className="card-text"> ₹ {p.price} </p>
                   <div className="d-flex mb-2">
-                    <button className="btn btn-primary ms-1">More Details</button>
-                    <button className="btn btn-secondary ms-1">Add to card</button>
+                    <button className="btn btn-secondary ms-1">Details</button>
+                    <button className="btn btn-secondary ms-1">Add To Cart</button>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+          <div className="m-2 p-3 text-center">
+            {products && products.length < total && (
+              <button className="btn btn-primary text-center " onClick={(e) => {
+                e.preventDefault();
+                setPage(page + 1);
+              }}
+              >
+                {loading ? "loading..." : "Loadmore"}
+              </button>
+            )}
           </div>
         </div>
       </div>
