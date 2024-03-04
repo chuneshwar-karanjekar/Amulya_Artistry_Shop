@@ -18,7 +18,8 @@ import UserProfile from "./pages/user/UserProfile.js";
 import Orders from "./pages/user/Orders.js";
 import Products from "./pages/Admin/Products.js";
 import UpdateProduct from "./pages/Admin/UpdateProduct.js";
-
+import CategoryProduct from "./pages/CategoryProduct.js";
+import ProductDetails from "./pages/ProductDetails.js";
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="*" element={<PageNotFound />} />
+        <Route path="/product-category/:slug" element={<CategoryProduct/>} />
+        <Route path="/product/:slug" element={<ProductDetails/>}/>
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* Private route for user*/}
