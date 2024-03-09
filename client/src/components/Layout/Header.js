@@ -3,13 +3,15 @@ import { NavLink, Link } from 'react-router-dom';
 import { useAuth } from '../../context/auth';
 import { toast } from 'react-hot-toast';
 import useCategory from '../../hooks/useCategory';
+import { useCart } from '../../context/card';
 
-
+ 
 
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
   const categories = useCategory();
+  const [cart] = useCart(0);
 
   // clear user data and token from local storage
   const handleLogout = () => {
@@ -46,7 +48,7 @@ const Header = () => {
                         {c.name}
                       </Link>
                     </li>
-                  ))} 
+                  ))}
                 </ul>
               </li>
 
@@ -83,7 +85,7 @@ const Header = () => {
               )}
 
               <li className="nav-item">
-                <NavLink to="/card" className="nav-link">Cart (0)</NavLink>
+                <NavLink to="/cart" className="nav-link">Cart ({cart?.length})</NavLink>
               </li>
             </ul>
           </div>

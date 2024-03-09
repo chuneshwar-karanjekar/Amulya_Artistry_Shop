@@ -20,6 +20,7 @@ import Products from "./pages/Admin/Products.js";
 import UpdateProduct from "./pages/Admin/UpdateProduct.js";
 import CategoryProduct from "./pages/CategoryProduct.js";
 import ProductDetails from "./pages/ProductDetails.js";
+import CartPage from "./pages/CartPage.js";
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register />} /> 
+        <Route path="/cart" element={<CartPage />} /> 
         <Route path="/login" element={<Login />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="*" element={<PageNotFound />} />
